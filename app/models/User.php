@@ -4,6 +4,7 @@ namespace app\models;
 class User extends \app\core\Model{
 	public $user_id;
 	public $username;
+	public $email;
 	public $password_hash;
 	public $password;
 
@@ -21,9 +22,9 @@ class User extends \app\core\Model{
 
 	public function insert(){
 		$this->password_hash = password_hash($this->password, PASSWORD_DEFAULT);
-		$SQL = 'INSERT INTO user(username, password_hash) VALUES (:username,:password_hash)';
+		$SQL = 'INSERT INTO user(username, email, password_hash) VALUES (:username,:email,:password_hash)';
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['username'=>$this->username,'password_hash'=>$this->password_hash]);
+		$STMT->execute(['username'=>$this->username,'email'=>$this->email,'password_hash'=>$this->password_hash]);
 	}
 
 	public function insertRequest($user_id,$video,$newVideo) {

@@ -9,7 +9,7 @@ class Model{
 		$username = 'root';
 		$password = '';
 		$host = 'localhost';//where we find the MySQL DB server
-		$DBname = 'Exam2'; //the DB name for your Web application
+		$DBname = 'Webservices'; //the DB name for your Web application
 
 
 		//connect the objects to the storage medium

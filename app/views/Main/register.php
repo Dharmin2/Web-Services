@@ -7,13 +7,18 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="Style.css">
 </head><body>
 	<div class="container">
 
 		Register a new user
 		<form method = "post" action = "">
+			<label for = "username">Username</label>
+			<input type="text" name="username" id = "username"><br>
+			<label for = "password">Password</label>
+			<input type="password" name="password" id = "password"><br>
 			<label for = "email">Email</label>
-			<input type="text" name="email" id = "email">
+			<input type="email" name="email" id = "email"><br>
 			<button>Send</button>
 		</form>
 		Already have an account? <a href='<?=BASE?>Main/login'>Login.</a>

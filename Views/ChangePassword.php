@@ -9,20 +9,19 @@
 </head><body>
 	<div class="container">
 
-		Register a new user
-		<form action='../Controllers/RegisterController.php' method='post'>
+		Change Password
+		<form action='../Controllers/ChangePasswordController.php' method='post'>
 			<div class="form-group">
-				<label>Username:</label><input class='form-control' type='text' name='name' required/>
+				<label>Old Password:</label><input class='form-control' type='password' name='oldPassword' required/>
 			</div>
 			<div class="form-group">
-				<label>Password:</label><input class='form-control' type='password' name='password' required/>
+				<label>New Password:</label><input class='form-control' type='password' name='password' required/>
 			</div>
 			<div class="form-group">
-				<label>Email:</label><input class='form-control' type='email' name='email' required/>
+				<label>Password confirmation:</label><input class='form-control' type='password' name='password_confirm' required/>
 			</div>
-			<input type='submit' name='action' value='Register' />
+			<input type='submit' name='action' value='Confirm' />
 		</form>
-		Already have an account? <a href='../Views/Login.php'>Login.</a>
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

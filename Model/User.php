@@ -19,6 +19,13 @@ class User {
         return $stmt;
     }
 
+    function getOne($name){
+        $query = "SELECT * FROM user where name = :name";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['name'=>$name]);
+        return $stmt;
+    }
+
     function create(){
         $this->password_hash = password_hash($this->password, PASSWORD_DEFAULT);
         $query = "INSERT INTO user SET name=:name, password_hash=:password_hash, email=:email";
@@ -26,17 +33,17 @@ class User {
         $stmt->execute(['name'=>$this->name,'password_hash'=>$this->password_hash,'email'=>$this->email]);
     } 
 
-    function delete($id){
-        $query = "DELETE from user where id = :id";
+    function delete($name){
+        $query = "DELETE from user where name = :name";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(['id'=>$id]);
+        $stmt->execute(['name'=>$name]);
     }
 
-    function update($id){
+    function update($name){
         $this->password_hash = password_hash($this->password, PASSWORD_DEFAULT);
-        $query = "UPDATE user SET password_hash=:password_hash where id=:id";
+        $query = "UPDATE user SET password_hash=:password_hash where name=:name";
         $stmt = $this->conn->prepare( $query );
-        $stmt->execute(['password_hash'=>$this->password_hash,'id'=>$id]);
+        $stmt->execute(['password_hash'=>$this->password_hash,'name'=>$name]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

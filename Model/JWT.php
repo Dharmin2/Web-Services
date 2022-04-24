@@ -97,7 +97,7 @@ class JWT
         $signature = hash_hmac('SHA256', $base64_header . "." . $base64_payload, $this->secret, true);
         $base64_signature = $this->encode($signature);
         if ($base64_signature === $clientSignature) {
-            return $data['username'];
+            return $data['name'];
         }
     }
 }

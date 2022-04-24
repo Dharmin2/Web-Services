@@ -16,7 +16,28 @@ $user = new User($db);
   
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
-$id = $data->id;
-$user->password = $data->password;
-$user->update($id)
+$oldPassword = $data->oldPassword;
+$newPassword = $data->password;
+$confirmPassword = $data->confirmPassword;
+
+
+$user = new User($db);
+$stmt = $user->getOne($data->name);
+$num = $stmt->rowCount();
+
+$stmt->bindColumn('id',$id);
+$stmt->bindColumn('name',$name);
+$stmt->bindColumn('email',$email);
+$stmt->bindColumn('password_hash',$password_hash);
+
+while ($row = $stmt->fetch()) {
+	if (password_verify($oldPassword, $password_hash)) {
+		$user->password = $newPassword;
+		echo $name;
+		$user->update($name);
+	}
+	else {
+		echo "Password doesn't match";
+	}
+}
 ?>

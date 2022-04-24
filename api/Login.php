@@ -10,7 +10,7 @@ $database = new Database();
 $db = $database->getConnection();
 $data = (array) json_decode($request_body, true);
 $user = new User($db);
-$stmt = $user->get($data['name']);
+$stmt = $user->getOne($data['name']);
 $pass = $data['password'];
 $num = $stmt->rowCount();
 
@@ -21,13 +21,12 @@ $stmt->bindColumn('password_hash',$password_hash);
 
 while ($row = $stmt->fetch()) {
 	if (password_verify($data['password'], $password_hash)) {
-		//echo "Password Matches";
 		$jwt = new jwt();
 		$token = $jwt->generate($data);
 		echo $token;
 	}
 	else {
-		echo "Password doesn't match";
+		echo "Password or username don't match";
 	}
 }
 // echo $user->name;

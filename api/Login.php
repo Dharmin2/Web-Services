@@ -10,7 +10,7 @@ $database = new Database();
 $db = $database->getConnection();
 $data = (array) json_decode($request_body, true);
 $user = new User($db);
-$stmt = $user->get($data['username']);
+$stmt = $user->get($data['name']);
 $pass = $data['password'];
 $num = $stmt->rowCount();
 

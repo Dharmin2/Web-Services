@@ -1,12 +1,13 @@
+<html>
 <head>
-    <title>Home page</title>
+    <title>Edit item</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="\css\styles.css" />
+      <link rel="stylesheet" type="text/css" href="\app\css\styles.css" />
 </head>
 <body>
 
@@ -26,31 +27,32 @@
     </form>
   </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/Cart/index"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+      <li><a href="/Cart/index/$item->item_id"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
 
 <div class="dropdown">      
   <button class="dropbtn">Items</button>
   <div class="dropdown-content"> <!-- Dropdown list -->
-<a href="/Views/index">View All items</a><br>
-<a href="/Views/addItem">Sell an Item</a><br>
+<a href="/Main/index">View All items</a><br>
+<a href="/Item/index">Sell an Item</a><br>
 </div>
 </div>
 <div class="dropdown">
   <button class="dropbtn">Account</button>
     <div class="dropdown-content"> <!-- Dropdown list -->
-    <a href="/Views/ChangePasswordController/"style="text-decoration: none;">Change password</a>
-
-    <a href="/Views/logout"style="text-decoration: none;">Logout</a>
+    <a href="/Main/changePassword/"style="text-decoration: none;">Change password</a>
+    <a href="/Main/logout"style="text-decoration: none;">Logout</a>
   </div>
-
 
     </div>
     </ul>
   </div>
 </nav>
-    <div>
-        <center>
-    </ul>
-  </div>
-</body>
-</html>
+<h1>Edit an item</h1>
+	<form action='/item/edit/<?php echo $data['item_id'] ?>' method='post'enctype="multipart/form-data">
+	Select an image file to upload:<input required type="file" name="newPicture"><br>
+	Item name: <input required type='text' name='name' /><br>
+	Item price: <input required type='text' name='price' /><br>
+	Description: <input required type='text' name='description' value='' /><br>
+			<input type='submit' name='action' value='Save changes' />
+</form>
+</body></html>

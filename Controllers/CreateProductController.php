@@ -42,4 +42,3 @@ $result = $s3->putObject([
 var_dump($result);
 
 header('Location: http://localhost/Views/Login.php');
-?>

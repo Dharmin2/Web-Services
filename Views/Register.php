@@ -1,3 +1,8 @@
+<?php
+if (isset($_COOKIE['JWT'])) {
+	// Refirect to index
+}
+?>
 <html lang="en">
 <head>
 	<!-- Required meta tags -->

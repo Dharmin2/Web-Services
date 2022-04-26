@@ -1,5 +1,4 @@
 <?php
-require_once('../Model/JWT.php');
 $url = "http://localhost/api/CreateUser.php";
 $curl = curl_init($url);
 curl_setopt($curl, CURLOPT_URL, $url);

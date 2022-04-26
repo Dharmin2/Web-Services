@@ -1,3 +1,8 @@
+<?php
+if (!isset($_COOKIE['JWT'])) {
+	header('Location: http://localhost/Views/Login.php');
+}
+?>
 <html lang="en">
 <head>
 	<!-- Required meta tags -->

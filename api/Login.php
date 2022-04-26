@@ -29,18 +29,6 @@ while ($row = $stmt->fetch()) {
 		echo "Password or username don't match";
 	}
 }
-// echo $user->name;
-// if($num > 0){
-// 	$jwt = new JWT();
-
-// 	if($user->password_hash == $data['password']){
-// 		$token = $jwt->generate($data);
-// 		echo $token;
-// 	}
-// 	else {
-// 		echo "Passwords don't match";
-// 	}
-// }
 ?>
 
 

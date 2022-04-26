@@ -63,7 +63,7 @@ class JWT
     {
         $token = explode('.', $jwt); // explode token based on JWT breaks
         if (!isset($token[1]) && !isset($token[2])) {
-            echo "Bad Token";
+            // echo "Bad Token";
             return false; // fails if the header and payload is not set
         }
         $headers = base64_decode($token[0]); // decode header, create variable
@@ -83,7 +83,7 @@ class JWT
     {
         $token = explode('.', $jwt); // explode token based on JWT breaks
         if (!isset($token[1]) && !isset($token[2])) {
-            echo "Bad Token";
+            //echo "Bad Token";
             return false; // fails if the header and payload is not set
         }
         $headers = base64_decode($token[0]); // decode header, create variable

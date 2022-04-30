@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include_once '../core/database.php';
 include_once '../Model/user.php';
-
+include_once '../Model/JWT.php';
 $database = new Database();
 $db = $database->getConnection();
 

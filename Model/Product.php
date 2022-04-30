@@ -25,10 +25,10 @@ class Product{
         $stmt->execute(['name'=>$this->name,'price'=>$this->price,'description'=>$this->description,'image'=>$this->image]);
     } 
 
-    function delete($id){
-        $query = "DELETE from product where id = :id";
+    function delete($name){
+        $query = "DELETE from product where name = :name";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(['id'=>$id]);
+        $stmt->execute(['name'=>$name]);
     }
 
     function update($id){

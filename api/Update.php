@@ -15,7 +15,6 @@ $jwt = new JWT();
 if ($jwt->is_valid()) {
 	$database = new Database();
 	$db = $database->getConnection();
-	
 	$product = new Product($db);
 	
 // get posted data

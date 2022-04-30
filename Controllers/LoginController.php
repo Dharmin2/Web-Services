@@ -1,6 +1,4 @@
 <?php
-require_once('../Model/JWT.php');
-$jwt = new jwt();
 if (!isset($_COOKIE['JWT'])) {
 	$url = "http://localhost/api/Login.php";
 	$curl = curl_init($url);
@@ -21,21 +19,11 @@ if (!isset($_COOKIE['JWT'])) {
 	$resp = curl_exec($curl);
 	$result = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $resp);
 	curl_close($curl);
-	setcookie("JWT",$result,time()+6000);
-	if ($jwt->is_valid($result)) {
-	// Redirect to index page
+	//var_dump($result);
+	if ($result != "Password or username don't match") {
+		setcookie("JWT",$result,time()+6000, "/");
 	}
 	else {
-		setcookie("JWT",$result,time()-6000);
-		header('Location: http://localhost/Views/Login.php');
-	}
-}
-else {
-	if ($jwt->is_valid($_COOKIE['JWT'])) {
-	// Redirect to index page
-	}
-	else {
-		setcookie("JWT","",time()-6000);
 		header('Location: http://localhost/Views/Login.php');
 	}
 }

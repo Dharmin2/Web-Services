@@ -7,23 +7,34 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once '../core/database.php';
-include_once '../Model/product.php';
+include_once '../Model/user.php';
 include_once '../Model/JWT.php';
 $database = new Database();
 $db = $database->getConnection();
 
-$product = new Product($db);
+$user = new User($db);
 
-
+// get posted data
 $data = json_decode(file_get_contents("php://input"));
 $jwt = $data->JWT;
 $validateJWT = new JWT();
 
 if ($validateJWT->is_valid($jwt)) {
-	$product->name = $data->name;
-	$product->price = $data->price;
-	$product->description = $data->description;
-	$product->image = $data->image;
-	$product->create()
+	$user = new User($db);
+	$name = $validateJWT->getUsername($jwt);
+	$stmt = $user->getOne($name);
+	$num = $stmt->rowCount();
+
+	$stmt->bindColumn('id',$id);
+	$stmt->bindColumn('name',$name);
+	$stmt->bindColumn('email',$email);
+	$stmt->bindColumn('password_hash',$password_hash);
+	$stmt->bindColumn('funds',$funds);
+
+	while ($row = $stmt->fetch()) {
+		$user->funds = $funds + $data->funds;
+		echo $user->funds;
+		$user->subtractMoney($data->funds, $name);
+	}
 }
 ?>

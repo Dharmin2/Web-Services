@@ -14,21 +14,12 @@ if (!isset($_COOKIE['JWT'])) {
 </head><body>
 	<div class="container">
 
-		Create a Product
-		<form action='../Controllers/CreateProductController.php' method='post' enctype="multipart/form-data">
+		Add funds
+		<form action='../Controllers/AddMoneyController.php' method='post'>
 			<div class="form-group">
-				<label>Name:</label><input class='form-control' type='text' name='name' required/>
+				<label>Add Funds:</label><input class='form-control' type="number" min="0" step="1" name='funds' required/>
 			</div>
-			<div class="form-group">
-				<label>Price:</label><input class='form-control' type='text' name='price' required/>
-			</div>
-			<div class="form-group">
-				<label>Description:</label><input class='form-control' type='text' name='description' required/>
-			</div>
-			<div class="form-group">
-				<label>Image:</label><input class='form-control' type='file' name='image' required accept="image/*"/>
-			</div>
-			<input type='submit' name='action' value='Create' />
+			<input type='submit' name='action' value='Confirm' />
 		</form>
 	</div>
 	<!-- Optional JavaScript -->

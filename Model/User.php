@@ -46,5 +46,19 @@ class User {
         $stmt->execute(['password_hash'=>$this->password_hash,'name'=>$name]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    function addMoney($funds, $name){
+        $query = "UPDATE user SET funds = funds + :funds where name=:name";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['funds'=>$funds,'name'=>$name]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function subtractMoney($funds, $name){
+        $query = "UPDATE user SET funds = funds - :funds where name=:name";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['funds'=>$funds,'name'=>$name]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>

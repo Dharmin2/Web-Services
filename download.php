@@ -6,7 +6,7 @@ use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 
 $bucket = 'cnkbucket';
-$keyname = 'StartScreen.png';
+$keyname = 'lab8.mp4';
 
 $s3 = new S3Client([
     'version' => 'latest',
@@ -26,8 +26,6 @@ try {
 
     // Display the object in the browser.
     header("Content-Type: {$result['ContentType']}");
-    header('Content-Disposition: attachment; filename='.$keyname); 
-    echo $result['Body'];
 } catch (S3Exception $e) {
     echo $e->getMessage() . PHP_EOL;
 }

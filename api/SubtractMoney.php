@@ -9,6 +9,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../core/database.php';
 include_once '../Model/user.php';
 include_once '../Model/JWT.php';
+include_once '../Model/Product.php';
 $database = new Database();
 $db = $database->getConnection();
 
@@ -18,11 +19,13 @@ $user = new User($db);
 $data = json_decode(file_get_contents("php://input"));
 $jwt = $data->JWT;
 $validateJWT = new JWT();
-
+$product = new Product($db);
+echo "HELLO";
 if ($validateJWT->is_valid($jwt)) {
 	$user = new User($db);
 	$name = $validateJWT->getUsername($jwt);
 	$stmt = $user->getOne($name);
+	$stmtProduct = $product->getOne($data->id);
 	$num = $stmt->rowCount();
 
 	$stmt->bindColumn('id',$id);
@@ -31,10 +34,20 @@ if ($validateJWT->is_valid($jwt)) {
 	$stmt->bindColumn('password_hash',$password_hash);
 	$stmt->bindColumn('funds',$funds);
 
+	$stmtProduct->bindColumn('id',$idProduct);
+	$stmtProduct->bindColumn('name',$nameProduct);
+	$stmtProduct->bindColumn('description',$description);
+	$stmtProduct->bindColumn('price',$price);
+	$stmtProduct->bindColumn('image',$image);
+	$productPrice = 10;
+	// echo $productPrice;
+	while ($row = $stmtProduct->fetch()) {
+		$product = $product->getOne($data->id);
+		$productPrice = $price;
+		echo $productPrice;
+	}
 	while ($row = $stmt->fetch()) {
-		$user->funds = $funds + $data->funds;
-		echo $user->funds;
-		$user->subtractMoney($data->funds, $name);
+		$user->subtractMoney($productPrice, $name);
 	}
 }
 ?>

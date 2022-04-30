@@ -15,9 +15,9 @@ $product = new Product($db);
 $products_arr=array();  
 
 $data = json_decode(file_get_contents("php://input"));
-$jwt = $data->JWT;
-$validateJWT = new JWT();
-if ($validateJWT->is_valid($jwt)) {
+// $jwt = $data->JWT;
+// $validateJWT = new JWT();
+// if ($validateJWT->is_valid($jwt)) {
     $stmt = $product->get();
     $num = $stmt->rowCount();
     if($num>0){
@@ -41,5 +41,5 @@ if ($validateJWT->is_valid($jwt)) {
         echo json_encode($products_arr, true);
     //var_dump($products_arr);
     }
-}
+//}
 ?>

@@ -19,6 +19,13 @@ class Product{
         return $stmt;
     }
 
+    function getOne($id){
+        $query = "SELECT * FROM product where id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['id'=>$id]);
+        return $stmt;
+    }
+
     function create(){
         $query = "INSERT INTO product SET name=:name, price=:price, description=:description, image=:image";
         $stmt = $this->conn->prepare($query);

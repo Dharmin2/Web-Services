@@ -42,7 +42,8 @@ for ($i = 0; $i < count($data); $i++) {
         // Get the actual presigned-url
         $presignedUrl = (string)$request->getUri();
 
-        echo '<a href="' . $presignedUrl . '">' . $presignedUrl . '<br><br></a>'; 
+        echo '<a href="' . $presignedUrl . '">' . $presignedUrl . '<br><br></a>';
+        echo "<a href='../Controllers/SubtractMoneyController.php?id=$myData[0]'>Purchase this item</a><br>"; 
 
     } catch (S3Exception $e) {
         echo $e->getMessage() . PHP_EOL;

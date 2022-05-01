@@ -11,19 +11,18 @@ include_once '../Model/product.php';
 include_once '../Model/JWT.php';
 
 $jwt = new JWT();
+$database = new Database();
+$db = $database->getConnection();
+$product = new Product($db);
+$data = json_decode(file_get_contents("php://input"));
 
-if ($jwt->is_valid()) {
-	$database = new Database();
-	$db = $database->getConnection();
-	$product = new Product($db);
-	
+if ($jwt->is_valid($data->JWT)) {
 // get posted data
-	$data = json_decode(file_get_contents("php://input"));
-	$id = $data->id;
 	$product->name = $data->name;
 	$product->price = $data->price;
 	$product->description = $data->description;
-	$product->update($id);
+	$product->image = $data->image;
+	$product->update($data->id);
 	echo '<script>window.location.href = "http://localhost/Views/Index.php"</script>';
 }
 ?>

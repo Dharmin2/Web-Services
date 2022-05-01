@@ -27,6 +27,10 @@ $s3 = new Aws\S3\S3Client([
         'secret' => "r/tA5ZuGO6pqBMh7fEXgs2YLwBZaA/qfvZk2MDtT"
     ]
 ]);
+echo "<a href = '../Views/Index.php'>Home</a><br>";
+echo "<a href = '../Views/Profile.php'>View My Profile</a><br>";
+echo "<a href = '../Views/MyItems.php'>View My Items</a><br>";
+echo "<a href = '../Views/ChangePassword.php'>Change Password</a><br>";
 if ($resp != null) {
     for ($i = 0; $i < count($data); $i++) {
         $myData = array_values($data[$i]);

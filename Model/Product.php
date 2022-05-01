@@ -47,7 +47,7 @@ class Product{
     }
 
     function update($id){
-        $query = "UPDATE product SET name=:name, price=:price, description=:description where id=:id";
+        $query = "UPDATE product SET name=:name, price=:price, description=:description, image =:image where id=:id";
         $stmt = $this->conn->prepare( $query );
         $stmt->execute(['name'=>$this->name,'price'=>$this->price,'description'=>$this->description,'image'=>$this->image,'id'=>$id]);
     }

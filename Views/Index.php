@@ -17,6 +17,10 @@ curl_close($curl);
 $data = json_decode($resp, true);
 // $myData = array_values($data[0]);
 // echo $myData[1];
+echo "<a href = '../Views/Index.php'>Home</a><br>";
+echo "<a href = '../Views/Profile.php'>View My Profile</a><br>";
+echo "<a href = '../Views/MyItems.php'>View My Items</a><br>";
+echo "<a href = '../Views/ChangePassword.php'>Change Password</a><br>";
 $bucket = 'cnkbucket';
 $s3 = new Aws\S3\S3Client([
     'version' => 'latest',

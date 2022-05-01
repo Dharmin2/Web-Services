@@ -14,32 +14,28 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 $name = $_POST['name'];
 $price = $_POST['price'];
 $description = $_POST['description'];
-$description = $_GET['id'];
+$id = $_POST['id'];
 $image = $_FILES['image']['name'];
 $arr = array('name' => $name, 'price' => $price, 'description' => $description,'image' => $image,'id' => $id, 'JWT' => $_COOKIE['JWT']);
 $data = json_encode($arr);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 $resp = curl_exec($curl);
 curl_close($curl);
+header('Location: http://localhost/Views/MyItems.php');
+// $s3 = new Aws\S3\S3Client([
+// 	'region'  => 'us-east-1',
+// 	'version' => 'latest',
+// 	'credentials' => [
+// 	    'key'    => "AKIAUTZKO3SNYPVE6ILQ",
+// 	    'secret' => "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",
+// 	]
+// ]);
 
-$s3 = new Aws\S3\S3Client([
-	'region'  => 'us-east-1',
-	'version' => 'latest',
-	'credentials' => [
-	    'key'    => "AKIAUTZKO3SNYPVE6ILQ",
-	    'secret' => "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",
-	]
-]);
+// $key = $image;
 
-$key = $image;
-
-$result = $s3->putObject([
-	'Bucket' => 'cnkbucket',
-	'Key'    => $key,
-	'Body'   => 'this is the body!',
-	//'SourceFile' => 'c:\samplefile.png' -- use this if you want to upload a file from a local location
-]);
-
-var_dump($result);
-
-header('Location: http://localhost/Views/Index.php');
+// $result = $s3->putObject([
+// 	'Bucket' => 'cnkbucket',
+// 	'Key'    => $key,
+// 	'Body'   => 'this is the body!',
+// 	//'SourceFile' => 'c:\samplefile.png' -- use this if you want to upload a file from a local location
+// ]);

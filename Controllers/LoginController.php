@@ -22,6 +22,7 @@ if (!isset($_COOKIE['JWT'])) {
 	//var_dump($result);
 	if ($result != "Password or username don't match") {
 		setcookie("JWT",$result,time()+6000, "/");
+		header('Location: http://localhost/Views/Index.php');
 	}
 	else {
 		header('Location: http://localhost/Views/Login.php');

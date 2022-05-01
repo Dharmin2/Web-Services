@@ -13,5 +13,11 @@ $data = json_encode($arr);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 $resp = curl_exec($curl);
 curl_close($curl);
+if ($resp == "Password doesn't match") {
+	header('Location: http://localhost/Views/ChangePassword.php');
+}
+else {
+	header('Location: http://localhost/Views/Index.php');
+}
 ?>
 

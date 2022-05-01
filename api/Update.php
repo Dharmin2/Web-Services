@@ -23,6 +23,7 @@ if ($jwt->is_valid()) {
 	$product->name = $data->name;
 	$product->price = $data->price;
 	$product->description = $data->description;
-	$product->update($id)
+	$product->update($id);
+	echo '<script>window.location.href = "http://localhost/Views/Index.php"</script>';
 }
 ?>

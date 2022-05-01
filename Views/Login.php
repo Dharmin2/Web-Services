@@ -1,6 +1,6 @@
 <?php
 if (isset($_COOKIE['JWT'])) {
-	// redirect to index
+	header('Location: http://localhost/Views/Index.php');
 }
 ?>
 <html lang="en">

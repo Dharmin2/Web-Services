@@ -10,6 +10,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../core/database.php';
 include_once '../Model/product.php';
 include_once '../Model/JWT.php';  
+
 $database = new Database();
 $db = $database->getConnection();
 
@@ -19,6 +20,6 @@ $data = json_decode(file_get_contents("php://input"));
 $jwt = $data->JWT;
 $validateJWT = new JWT();
 if ($validateJWT->is_valid($jwt)) {
-	$product->delete($data->id)
+	$product->delete($data->id);
 }
 ?>

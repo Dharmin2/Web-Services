@@ -7,6 +7,7 @@ class Product{
     public $description;
     public $price;
     public $image;
+    public $userId;
 
     public function __construct($db){
         $this->conn = $db;
@@ -26,16 +27,23 @@ class Product{
         return $stmt;
     }
 
-    function create(){
-        $query = "INSERT INTO product SET name=:name, price=:price, description=:description, image=:image";
+    function getMyItems($userId){
+        $query = "SELECT * FROM product where userId = :userId";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(['name'=>$this->name,'price'=>$this->price,'description'=>$this->description,'image'=>$this->image]);
+        $stmt->execute(['userId'=>$userId]);
+        return $stmt;
+    }
+
+    function create(){
+        $query = "INSERT INTO product SET name=:name, price=:price, description=:description, image=:image, userId =:userId";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['name'=>$this->name,'price'=>$this->price,'description'=>$this->description,'image'=>$this->image,'userId'=>$this->userId]);
     } 
 
-    function delete($name){
-        $query = "DELETE from product where name = :name";
+    function delete($id){
+        $query = "DELETE from product where id = :id";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute(['name'=>$name]);
+        $stmt->execute(['id'=>$id]);
     }
 
     function update($id){

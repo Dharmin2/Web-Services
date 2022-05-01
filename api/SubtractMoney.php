@@ -20,7 +20,7 @@ $data = json_decode(file_get_contents("php://input"));
 $jwt = $data->JWT;
 $validateJWT = new JWT();
 $product = new Product($db);
-echo "HELLO";
+
 if ($validateJWT->is_valid($jwt)) {
 	$user = new User($db);
 	$name = $validateJWT->getUsername($jwt);
@@ -47,7 +47,15 @@ if ($validateJWT->is_valid($jwt)) {
 		echo $productPrice;
 	}
 	while ($row = $stmt->fetch()) {
-		$user->subtractMoney($productPrice, $name);
+		if ($productPrice <= $funds) {
+			$user->subtractMoney($productPrice, $name);
+			echo '<script>alert("Product was purchased")</script>';
+			echo '<script>window.location.href = "http://localhost/Views/Index.php"</script>';
+		}
+		else {
+			echo '<script>alert("You don\'t have enough money to purchase this item")</script>';
+			echo '<script>window.location.href = "http://localhost/Views/Index.php"</script>';
+		}
 	}
 }
 ?>

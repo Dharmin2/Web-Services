@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: 'User API'
+  description: 'API to interact with users'
+  version: '0.1'
+paths:
+  /api/Get:
+    get:
+      operationId: 6ef1f7a71113c2e5d7502984b7779d53
+      responses:
+        '200':
+          description: 'Retreives all users'
+  /api/Profile:
+    get:
+      operationId: c7f2c3a65908261ad4de171e46f0db51
+      responses:
+        '200':
+          description: 'Retrieves specified user'
+  /api/CreateUser:
+    post:
+      operationId: ed4706396fe708ccc805b4fade612757
+      responses:
+        '200':
+          description: 'Registers a user to the database'
+  /api/unused:
+    delete:
+      operationId: a4fa3a264cb8a386a47f05957a4da63f
+      responses:
+        '200':
+          description: Unused
+  /api/UpdateUser:
+    patch:
+      operationId: 3116099a90e0782d6a9de148cbd03da6
+      responses:
+        '200':
+          description: 'Changes the password for the user that is logged in'
+  /api/AddMoney:
+    patch:
+      operationId: 90d8913f629e6b765dd4a278f48bc8fc
+      responses:
+        '200':
+          description: 'User adds funds to his account'
+  /api/SubtractMoney:
+    patch:
+      operationId: a95a074cd6ac9a95d9bd62e8e6f42559
+      responses:
+        '200':
+          description: 'Subtracts money from users account when he makes a purchase'
+

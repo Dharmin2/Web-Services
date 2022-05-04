@@ -1,5 +1,7 @@
 {
     "require": {
-        "aws/aws-sdk-php": "^3.220"
+        "aws/aws-sdk-php": "^3.220",
+        "zircote/swagger-php": "^4.3",
+        "monolog/monolog": "^2.5"
     }
 }

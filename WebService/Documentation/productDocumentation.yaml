@@ -1,0 +1,41 @@
+openapi: 3.0.0
+info:
+  title: 'My Api'
+  description: 'API to interact with products'
+  version: '0.1'
+paths:
+  /api/get:
+    get:
+      operationId: b73787927b39aae220f86e2cc00d3a2a
+      responses:
+        '200':
+          description: 'Retrieves all the products'
+    put:
+      operationId: f5c5b01df632c023a317ac2a9501f5aa
+      responses:
+        '200':
+          description: 'Update a product with new data'
+    delete:
+      operationId: b1d0410719a5a8e76f9b8c5b3449a375
+      responses:
+        '200':
+          description: 'Deletes a specified product'
+  /api/SubtractMoney:
+    get:
+      operationId: 3d2f263e6968de80b83a1a06f7451351
+      responses:
+        '200':
+          description: 'Retreives specified item'
+  /api/MyItems:
+    get:
+      operationId: bcba7e590afc937bc8856e26cc1047fd
+      responses:
+        '200':
+          description: 'Retrieves all the products from a specified user'
+  /api/Create:
+    post:
+      operationId: efef1052ff0779e91227cdfb777607e2
+      responses:
+        '200':
+          description: 'Inserts the product into the database and uploads image to cdn'
+

@@ -8,7 +8,7 @@ curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 $headers = array(
-   "Content-Type: application/json",
+	"Content-Type: application/json",
 );
 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 $name = $_POST['name'];
@@ -26,8 +26,8 @@ $s3 = new Aws\S3\S3Client([
 	'region'  => 'us-east-1',
 	'version' => 'latest',
 	'credentials' => [
-	    'key'    => "AKIAUTZKO3SNYPVE6ILQ",
-	    'secret' => "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",
+		'key'    => "AKIAUTZKO3SNYPVE6ILQ",
+		'secret' => "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",
 	]
 ]);
 
@@ -41,5 +41,12 @@ $result = $s3->putObject([
 ]);
 
 // var_dump($result);
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$Logger = new Logger('info');
+
+$Logger->pushHandler(new StreamHandler('/xampp/htdocs/WebService/Logs/ProductLog.log', Logger::DEBUG));
+$Logger->info('A product has been created', ['name'=>$name, 'JWT' => $_COOKIE['JWT']]);
 
 header('Location: http://localhost/WebClient/Views/Index.php');

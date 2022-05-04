@@ -39,4 +39,13 @@ $result = $s3->putObject([
 	'Body'   => 'this is the body!',
 	//'SourceFile' => 'c:\samplefile.png' -- use this if you want to upload a file from a local location
 ]);
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$Logger = new Logger('info');
+
+$Logger->pushHandler(new StreamHandler('/xampp/htdocs/WebService/Logs/ProductLog.log', Logger::DEBUG));
+$Logger->info('A product has been created', ['id'=>$id,'JWT' => $_COOKIE['JWT']]);
+
 header('Location: http://localhost/WebClient/Views/MyItems.php');

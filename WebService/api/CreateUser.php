@@ -18,5 +18,5 @@ $data = json_decode(file_get_contents("php://input"));
 $user->name = $data->name;
 $user->password = $data->password;
 $user->email = $data->email;
-$user->create()
+$user->create();
 ?>

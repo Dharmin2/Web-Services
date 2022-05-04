@@ -15,7 +15,7 @@ if (isset($_COOKIE['JWT'])) {
 	<div class="container">
 
 		Register a new user
-		<form action='../Controllers/RegisterController.php' method='post'>
+		<form action='../../WebService/Controllers/RegisterController.php' method='post'>
 			<div class="form-group">
 				<label>Username:</label><input class='form-control' type='text' name='name' required/>
 			</div>

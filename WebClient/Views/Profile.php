@@ -24,6 +24,7 @@ echo "<a href = '../Views/Profile.php'>View My Profile</a><br>";
 echo "<a href = '../Views/MyItems.php'>View My Items</a><br>";
 echo "<a href = '../Views/ChangePassword.php'>Change Password</a><br>";
 echo "<a href = '../Views/CreateProduct.php'>Create Product</a><br>";
+echo "<a href = '../../WebService/Controllers/LogoutController.php'>Logout</a><br>";
 $bucket = 'cnkbucket';
 $s3 = new Aws\S3\S3Client([
     'version' => 'latest',

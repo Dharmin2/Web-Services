@@ -19,6 +19,7 @@ if (!isset($_COOKIE['JWT'])) {
 			<a href = '../Views/MyItems.php'>View My Items</a>
 			<a href = '../Views/ChangePassword.php'>Change Password</a><br><br>
 			<a href = '../Views/CreateProduct.php'>Create Product</a><br>
+			<a href = '../../WebService/Controllers/LogoutController.php'>Logout</a><br>
 			Edit a Product
 			<form action='../../WebService/Controllers/EditProductController.php' method='post' enctype="multipart/form-data">
 				<div class="form-group">

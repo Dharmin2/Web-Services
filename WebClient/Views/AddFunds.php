@@ -19,6 +19,7 @@ if (!isset($_COOKIE['JWT'])) {
 			<a href = '../Views/MyItems.php'>View My Items</a>
 			<a href = '../Views/ChangePassword.php'>Change Password</a>
 			<a href = '../Views/CreateProduct.php'>Create Product</a><br><br>
+			<a href = '../../WebService/Controllers/LogoutController.php'>Logout</a><br>;
 			Add funds
 			<form action='../../WebService/Controllers/AddMoneyController.php' method='post'>
 				<div class="form-group">
